@@ -3,45 +3,47 @@
     
         public class Program
         {
-            public static void swap(char[] chars, int i, int j)
+        public static void Display(char[] arr)
+        {
+            foreach (char c in arr)
             {
-                char temp = chars[i];
-                chars[i] = chars[j];
-                chars[j] = temp;
+                Console.WriteLine(c + " ");
             }
+        }
+        public static void Main(string[] args)
+        {
+            char[] arr = { 'e', 'c', 'd', 'e', 'f' };
+            Array.Sort(arr);
 
-            public static void permutations(char[] chars, int currentIndex)
+            Console.WriteLine("The Element of sorted array : ");
+
+            Display(arr);
+
+            object s = 'h';
+
+            result(arr, s);
+
+            object s1 = 'a';
+
+            result(arr, s1);
+
+        }
+
+        public static void result(char[] arr2, object k)
+        {
+            int res = Array.BinarySearch(arr2, k);
+            if (res < 0)
             {
-                if (currentIndex == chars.Length - 1)
-                {
-                    Console.WriteLine(chars);
-                }
-
-                for (int i = currentIndex; i < chars.Length; i++)
-                {
-                    swap(chars, currentIndex, i);
-                    permutations(chars, currentIndex + 1);
-                    swap(chars, currentIndex, i);
-                }
+                Console.WriteLine("\nThe element to search for "
+                                + "({0}) is not found.",
+                            k);
             }
-
-            public static void findPermutations(String str)
+            else
             {
-
-                // base case
-                if (str == null || str.Length == 0)
-                {
-                    return;
-                }
-
-                permutations(str.ToCharArray(), 0);
-            }
-            public static void Main(string[] args)
-            {
-                String str = "ABC";
-                findPermutations(str);
-
-
+                Console.WriteLine("The element to search for "
+                                      + "({0}) is at index {1}.",
+                                  k, res);
             }
         }
     }
+ }

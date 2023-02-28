@@ -2,39 +2,37 @@
 using System.ComponentModel.DataAnnotations;
 using System.Security.Cryptography.X509Certificates;
 
-namespace AlgorithmProblemDemo
+namespace AlgorithmProblems
 {
     public class Program
     {
-
-        public static void BubbleSort<T>(T[] arr) where T : IComparable<T>
+        static void Main(string[] args)
         {
-            int n = arr.Length;
-            for (int i = 0; i < n - 1; i++)
+            int i;
+            Console.WriteLine("Enter the N value : ");
+            int N = Convert.ToInt32(Console.ReadLine());
+            int[] arr = new int[N];
+            for (i = 0; i < N; i++)
             {
-                for (int j = 0; j < n - i - 1; j++)
+                var temp = (int)Math.Pow(2, i);
+                // Console.WriteLine(temp);
+                arr[i] = temp;
+                Console.WriteLine(arr[i]);
+                //Console.WriteLine("Enter the Value to be Search in Array : ");
+            }
+
+            Console.WriteLine("Enter the Value to be Search in Array : ");
+            int user = Convert.ToInt32(Console.ReadLine());
+            for (int j = 0; j < arr.Length; j++)
+            {
+                if (arr[j] == user)
                 {
-                    if (arr[j].CompareTo(arr[j + 1]) > 0)
-                    {
-                        T temp = arr[j];
-                        arr[j] = arr[j + 1];
-                        arr[j + 1] = temp;
-                    }
+                    // Found the target number at index i
+                    Console.WriteLine("Number is exist");
+                    break;
                 }
+
             }
-            Console.WriteLine("Binary Sorted");
-            foreach (var p in arr)
-            {
-                Console.WriteLine(p);
-            }
-
-
-        }
-        public static void Main(string[] args)
-        {
-            int[] arr = { 5, 2, 8, 4, 1 };
-            Program.BubbleSort(arr);
-
 
         }
 

@@ -3,36 +3,31 @@
     
         public class Program
         {
-        public static void DisplayNumber()
+        public static void DisplayAnagram()
         {
-            int[] arr = { 78, 55, 45, 98, 13 };
-            int temp;
-            for (int j = 0; j <= arr.Length - 2; j++)
-            {
-                for (int i = 0; i <= arr.Length - 2; i++)
-                {
-                    if (arr[i] > arr[i + 1])
-                    {
-                        temp = arr[i + 1];
-                        arr[i + 1] = arr[i];
-                        arr[i] = temp;
-                    }
-                }
-            }
-            Console.WriteLine("Binary Sorted");
-            foreach (int p in arr)
-            {
-                Console.WriteLine(p);
-            }
+            string str1 = "eat";
+            string str2 = "mat";
+            char[] chr1 = str1.ToLower().ToCharArray();
+            char[] chr2 = str2.ToLower().ToCharArray();
 
+            Array.Sort(chr1);
+            Array.Sort(chr2);
+
+            string val1 = new string(chr1);
+            string val2 = new string(chr2);
+
+            if (val1 == val2)
+            {
+                Console.WriteLine("This is Anagram");
+            }
+            else
+            {
+                Console.WriteLine("This is not Anagram");
+            }
         }
-
-
-
-
         public static void Main(string[] args)
         {
-            Program.DisplayNumber();
+            Program.DisplayAnagram();
 
 
         }

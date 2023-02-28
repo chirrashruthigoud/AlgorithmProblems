@@ -3,46 +3,36 @@
     
         public class Program
         {
-        public static void Display()
+        public static void DisplayNumber()
         {
-            int[] arr = new int[5] { 23, 9, 85, 12, 99 };
-            int n = 5, i, j, val, flag;
-            Console.WriteLine("Intial Array");
-            for (i = 0; i < n; i++)
+            int[] arr = { 78, 55, 45, 98, 13 };
+            int temp;
+            for (int j = 0; j <= arr.Length - 2; j++)
             {
-                Console.WriteLine(arr[i]);
-            }
-
-            for (i = 1; i < n; i++)
-            {
-                val = arr[i];
-                flag = 0;
-                for (j = i - 1; j >= 0 && flag != 1;)
+                for (int i = 0; i <= arr.Length - 2; i++)
                 {
-                    if (val < arr[j])
+                    if (arr[i] > arr[i + 1])
                     {
-                        arr[j + 1] = arr[j];
-                        j--;
-                        arr[j + 1] = val;
-                    }
-                    else
-                    {
-                        flag = 1;
+                        temp = arr[i + 1];
+                        arr[i + 1] = arr[i];
+                        arr[i] = temp;
                     }
                 }
             }
-            Console.WriteLine("Sorted Array");
+            Console.WriteLine("Binary Sorted");
             foreach (int p in arr)
             {
                 Console.WriteLine(p);
             }
 
-
         }
+
+
+
 
         public static void Main(string[] args)
         {
-            Program.Display();
+            Program.DisplayNumber();
 
 
         }

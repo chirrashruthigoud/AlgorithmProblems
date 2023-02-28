@@ -7,50 +7,36 @@ namespace AlgorithmProblemDemo
     public class Program
     {
 
-        static void Main(string[] args)
+        public static void BubbleSort<T>(T[] arr) where T : IComparable<T>
         {
-            Console.Write("Enter the starting number: ");
-            int start = int.Parse(Console.ReadLine());
-
-            Console.Write("Enter the ending number: ");
-            int end = int.Parse(Console.ReadLine());
-
-            for (int i = start; i <= end; i++)
+            int n = arr.Length;
+            for (int i = 0; i < n - 1; i++)
             {
-                if (i % 2 == 0)
+                for (int j = 0; j < n - i - 1; j++)
                 {
-                    continue;
-                }
-                else
-                {
-                    Console.WriteLine("Prime Number : {0}", i);
+                    if (arr[j].CompareTo(arr[j + 1]) > 0)
+                    {
+                        T temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
                 }
             }
-
-            Console.WriteLine("Palindrome numbers in the range [{0}, {1}]:", start, end);
-
-            for (int num = start; num <= end; num++)
+            Console.WriteLine("Binary Sorted");
+            foreach (var p in arr)
             {
-                if (IsPalindrome(num))
-                {
-                    Console.WriteLine(num);
-                }
+                Console.WriteLine(p);
             }
+
+
+        }
+        public static void Main(string[] args)
+        {
+            int[] arr = { 5, 2, 8, 4, 1 };
+            Program.BubbleSort(arr);
+
+
         }
 
-        static bool IsPalindrome(int num)
-        {
-            int originalNum = num;
-            int reversedNum = 0;
-
-            while (num > 0)
-            {
-                int digit = num % 10;
-                reversedNum = reversedNum * 10 + digit;
-                num /= 10;
-            }
-
-            return originalNum == reversedNum;
-        }
     }
 }
